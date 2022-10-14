@@ -3,6 +3,7 @@ const usuarioService = require('../services/usuarioService');
 const insere = async function (req, res) {
     const usuario = await usuarioService.insere(req.body)
     res.send(usuario)
+
 }
 const encontrarTodos = async function (req, res) {
     const usuarios = await usuarioService.encontrarTodos();
@@ -11,6 +12,10 @@ const encontrarTodos = async function (req, res) {
 
 const encontrarPorId = async function (req, res) {
     const usuario = await usuarioService.encontrarPorId(req.params.id);
+    res.send(usuario);
+}
+const encontrarPorCargo = async function (req, res) {
+    const usuario = await usuarioService.encontrarPorCargo(req.params.cargo);
     res.send(usuario);
 }
 
@@ -28,6 +33,7 @@ module.exports = {
     insere,
     encontrarTodos,
     encontrarPorId,
+    encontrarPorCargo,
     atualizar,
     deletar,
 }

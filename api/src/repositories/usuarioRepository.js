@@ -14,6 +14,13 @@ const encontrarPorId = async function (id) {
     return usuario;
 }
 
+
+const encontrarUmPorWhere = async function (where) {
+    const usuario = await Usuario.findOne({
+        where: where
+    });
+    return usuario;
+}
 const atualizar = async function (usuario, id) {
     await Usuario.update(usuario, { where: { id: id } });
     return usuario;
@@ -26,6 +33,7 @@ module.exports = {
     insere,
     encontrarTodos,
     encontrarPorId,
+    encontrarUmPorWhere,
     atualizar,
     deletar,
 }
