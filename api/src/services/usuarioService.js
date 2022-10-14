@@ -1,5 +1,11 @@
 const usuarioRepository = require('../repositories/usuarioRepository');
+require('dotenv').config();
+const bcrypt = require('bcrypt');
+
+
+
 const insere = async function (usuario) {
+    usuario.senha = await bcrypt.hash(usuario.senha, ~~process.env.SALT)
     const usuarioCriado = await usuarioRepository.insere(usuario);
     return usuarioCriado;
 }
