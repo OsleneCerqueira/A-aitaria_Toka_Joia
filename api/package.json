@@ -10,8 +10,10 @@
   "author": "Oslene Cerqueira",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "http-errors": "^2.0.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.1"
   },
