@@ -13,6 +13,12 @@ const validaPut = () => {
         body('senha').isLength({ min: 6 }).withMessage("Campo senha precisa ter pelo menos 6 caracteres")
     ]
 }
+const login = () => {
+    return [
+        body('email').isEmail().withMessage("Email inválido"),
+        body('senha').isLength({ min: 6 }).withMessage("Senha inválida")
+    ]
+}
 
 
-module.exports = { validaPost, validaPut } 
+module.exports = { validaPost, validaPut, login } 

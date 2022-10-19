@@ -2,6 +2,7 @@ const usuarioRepository = require('../repositories/usuarioRepository');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const createError = require('http-errors');
+const { sign } = require('jsonwebtoken');
 
 
 
