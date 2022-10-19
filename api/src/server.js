@@ -5,13 +5,13 @@ const handleError = require('./middlewares/handleError');
 
 
 const usuarios = require('./routes/usuarioRoute');
-const acais = require('./routes/acai.route')
+const produtos = require('./routes/produto.route')
 
 const app = express();
 app.use(express.json());
 
 app.use('/usuarios', usuarios);
-app.use('/acais', acais);
+app.use('/produtos', produtos);
 app.use(handle404Error);
 app.use(handleError);
 

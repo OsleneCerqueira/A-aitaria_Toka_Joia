@@ -1,4 +1,4 @@
-const acaiService = require('../services/acai.service');
+const produtoService = require('../services/produto.service');
 const { validationResult } = require('express-validator');
 const createError = require('http-errors');
 
@@ -8,11 +8,11 @@ const insere = async function (req, res, next) {
         if (!errors.isEmpty()) {
             throw createError(422, { errors: errors.array() })
         }
-        const usuario = await acaiService.insere(req.body)
-        if (usuario && usuario.message) {
-            throw usuario;
+        const produtos = await produtoService.insere(req.body)
+        if (produtos && produtos.message) {
+            throw produtos;
         }
-        res.send(usuario)
+        res.send(produtos)
     } catch (error) {
         next(error)
     }
@@ -21,8 +21,8 @@ const insere = async function (req, res, next) {
 
 const encontrarTodos = async function (req, res, next) {
     try {
-        const usuarios = await acaiService.encontrarTodos();
-        res.send(usuarios)
+        const produtoss = await produtoService.encontrarTodos();
+        res.send(produtoss)
     } catch (error) {
         next(error)
     }
@@ -31,13 +31,24 @@ const encontrarTodos = async function (req, res, next) {
 
 const encontrarPorId = async function (req, res, next) {
     try {
-        const usuario = await acaiService.encontrarPorId(req.params.id);
-        res.send(usuario);
+        const produtos = await produtoService.encontrarPorId(req.params.id);
+        res.send(produtos);
     } catch (error) {
         next(error)
     }
 
 }
+const encontrarPorCategoria = async function (req, res, next) {
+    try {
+        const produtos = await produtoService.encontrarPorId(req.params.categoria);
+        res.send(produtos);
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+
 
 
 const atualizar = async function (req, res, next) {
@@ -46,11 +57,11 @@ const atualizar = async function (req, res, next) {
         if (!errors.isEmpty()) {
             throw createError(422, { errors: errors.array() })
         }
-        const usuario = await acaiService.atualizar(req.body, req.params.id);
-        if (usuario && usuario.message) {
-            throw usuario;
+        const produtos = await produtoService.atualizar(req.body, req.params.id);
+        if (produtos && produtos.message) {
+            throw produtos;
         }
-        res.send(usuario);
+        res.send(produtos);
     } catch (error) {
         next(error)
     }
@@ -59,8 +70,8 @@ const atualizar = async function (req, res, next) {
 
 const deletar = async function (req, res, next) {
     try {
-        const usuario = await acaiService.deletar(req.params.id);
-        res.send(usuario);
+        const produtos = await produtoService.deletar(req.params.id);
+        res.send(produtos);
     } catch (error) {
         next(error)
     }
@@ -71,6 +82,7 @@ module.exports = {
     insere,
     encontrarTodos,
     encontrarPorId,
+    encontrarPorCategoria,
     atualizar,
     deletar,
 }
