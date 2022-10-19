@@ -15,6 +15,35 @@ const insere = async function (usuario) {
     await usuarioRepository.insere(usuario);
     return { sucess: 'Usuário criado com sucesso' };
 }
+
+const login = async function (usuario) {
+    const usuarioLogin = await usuarioRepository.encontrarUmPorWhere({
+        email: usuario.email
+    });
+
+    if (!usuarioLogin) {
+        return createError(401, 'Usuário inválido');
+    }
+
+    const comparacaoSenha = await bcrypt.compare(usuario.senha, usuarioLogin.senha);
+
+    if (!comparacaoSenha) {
+        return createError(401, 'Usuário inválido');
+    }
+
+    const token = sign({
+        id: usuarioLogin.id
+    }, process.env.SECRET, {});
+    delete usuarioLogin.senha
+
+    return {
+        auth: true,
+        usuario: usuarioLogin,
+        token: token,
+    }
+}
+
+
 const encontrarTodos = async function () {
     const usuarios = await usuarioRepository.encontrarTodos();
     return usuarios;
@@ -67,6 +96,7 @@ const deletar = async function (id) {
 
 module.exports = {
     insere,
+    login,
     encontrarTodos,
     encontrarPorId,
     encontrarPorCargo,
