@@ -1,7 +1,13 @@
 const usuarioService = require('../services/usuarioService');
+const { validationResult } = require('express-validator');
+const createError = require('http-errors');
 
 const insere = async function (req, res, next) {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            throw createError(422, { errors: errors.array() })
+        }
         const usuario = await usuarioService.insere(req.body)
         if (usuario && usuario.message) {
             throw usuario;
@@ -41,8 +47,12 @@ const encontrarPorCargo = async function (req, res, next) {
 
 }
 
-const atualizar = async function (req, res) {
+const atualizar = async function (req, res, next) {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            throw createError(422, { errors: errors.array() })
+        }
         const usuario = await usuarioService.atualizar(req.body, req.params.id);
         if (usuario && usuario.message) {
             throw usuario;

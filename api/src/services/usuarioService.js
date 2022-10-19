@@ -6,7 +6,6 @@ const createError = require('http-errors');
 
 
 const insere = async function (usuario) {
-    verificaCampoVazio(usuario);
     const existeUsuario = await usuarioRepository.encontrarUmPorWhere({ email: usuario.email });
     if (existeUsuario) {
         return createError(409, `Usuário de email: ${usuario.email} já existe`);
@@ -30,6 +29,7 @@ const encontrarPorId = async function (id) {
     return usuario;
 }
 
+
 const encontrarPorCargo = async function (cargo) {
     const usuario = await usuarioRepository.encontrarUmPorWhere({ cargo: cargo })
 
@@ -43,12 +43,12 @@ const encontrarPorCargo = async function (cargo) {
 
 
 const atualizar = async function (usuario, id) {
-    verificaCampoVazio(usuario);
     const existeUsuario = await usuarioRepository.encontrarPorId(id);
 
     if (!existeUsuario) {
         return createError(404, `Usuário de id: ${id} não encontrado`);
     }
+    usuario.senha = await bcrypt.hash(usuario.senha, ~~process.env.SALT)
 
     await usuarioRepository.atualizar(usuario, id);
 
