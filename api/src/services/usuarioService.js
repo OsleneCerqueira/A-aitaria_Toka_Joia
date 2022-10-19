@@ -2,18 +2,15 @@ const usuarioRepository = require('../repositories/usuarioRepository');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const createError = require('http-errors');
-const verificaCampoVazio = require('../utils/errorMensage')
 
 
 
 const insere = async function (usuario) {
     verificaCampoVazio(usuario);
     const existeUsuario = await usuarioRepository.encontrarUmPorWhere({ email: usuario.email });
-
     if (existeUsuario) {
         return createError(409, `Usuário de email: ${usuario.email} já existe`);
     }
-
     usuario.senha = await bcrypt.hash(usuario.senha, ~~process.env.SALT)
 
     await usuarioRepository.insere(usuario);
