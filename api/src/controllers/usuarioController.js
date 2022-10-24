@@ -2,13 +2,13 @@ const usuarioService = require('../services/usuarioService');
 const { validationResult } = require('express-validator');
 const createError = require('http-errors');
 
-const insere = async function (req, res, next) {
+const inserir = async function (req, res, next) {
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             throw createError(422, { errors: errors.array() })
         }
-        const usuario = await usuarioService.insere(req.body)
+        const usuario = await usuarioService.inserir(req.body)
         if (usuario && usuario.message) {
             throw usuario;
         }
@@ -92,7 +92,7 @@ const deletar = async function (req, res, next) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     login,
     encontrarTodos,
     encontrarPorId,

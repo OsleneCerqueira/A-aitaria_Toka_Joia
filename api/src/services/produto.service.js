@@ -3,9 +3,9 @@ const createError = require('http-errors');
 
 
 
-const insere = async function (produto) {
+const inserir = async function (produto) {
 
-    await ProdutoRepository.insere(produto);
+    await ProdutoRepository.inserir(produto);
     return { sucess: 'Produto criado com sucesso' };
 }
 
@@ -57,7 +57,7 @@ const deletar = async function (id) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     encontrarTodos,
     encontrarPorId,
     encontrarPorCategoria,

@@ -1,6 +1,6 @@
 const { Produto } = require('../models/index');
 
-const insere = async function (produto) {
+const inserir = async function (produto) {
     const produtoCriado = await Produto.create(produto);
     return produtoCriado;
 }
@@ -31,7 +31,7 @@ const deletar = async function (id) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     encontrarTodos,
     encontrarUmPorWhere,
     encontrarPorId,

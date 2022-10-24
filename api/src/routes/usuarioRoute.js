@@ -4,7 +4,7 @@ const usuarioController = require('../controllers/usuarioController');
 const validaUsuario = require('../middlewares/validacoes/validaUsuario');
 const verifyJWT = require('../middlewares/autorizador');
 
-router.post('/', validaUsuario.validaPost(), usuarioController.insere)
+router.post('/', validaUsuario.validaPost(), usuarioController.inserir)
 router.post('/login', validaUsuario.login(), usuarioController.login)
 router.get('/', verifyJWT, usuarioController.encontrarTodos)
 router.get('/id/:id', verifyJWT, usuarioController.encontrarPorId)

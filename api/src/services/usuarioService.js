@@ -6,14 +6,14 @@ const { sign } = require('jsonwebtoken');
 
 
 
-const insere = async function (usuario) {
+const inserir = async function (usuario) {
     const existeUsuario = await usuarioRepository.encontrarUmPorWhere({ email: usuario.email });
     if (existeUsuario) {
         return createError(409, `Usuário de email: ${usuario.email} já existe`);
     }
     usuario.senha = await bcrypt.hash(usuario.senha, ~~process.env.SALT)
 
-    await usuarioRepository.insere(usuario);
+    await usuarioRepository.inserir(usuario);
     return { sucess: 'Usuário criado com sucesso' };
 }
 
@@ -96,7 +96,7 @@ const deletar = async function (id) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     login,
     encontrarTodos,
     encontrarPorId,

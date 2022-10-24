@@ -1,6 +1,6 @@
 const { Usuario } = require('../models/index');
 
-const insere = async function (usuario) {
+const inserir = async function (usuario) {
     const usuarioCriado = await Usuario.create(usuario);
     return usuarioCriado;
 }
@@ -30,7 +30,7 @@ const deletar = async function (id) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     encontrarTodos,
     encontrarPorId,
     encontrarUmPorWhere,

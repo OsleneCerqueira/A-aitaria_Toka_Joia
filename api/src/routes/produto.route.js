@@ -4,7 +4,7 @@ const produtoController = require('../controllers/produto.controller');
 const validaProduto = require('../middlewares/validacoes/validaProduto');
 const verifyJWT = require('../middlewares/autorizador');
 
-router.post('/', validaProduto.validaPost(), produtoController.insere)
+router.post('/', validaProduto.validaPost(), produtoController.inserir)
 router.get('/', verifyJWT, produtoController.encontrarTodos)
 router.get('/id/:id', verifyJWT, produtoController.encontrarPorId)
 router.get('/categoria/:categoria', verifyJWT, produtoController.encontrarPorCategoria)

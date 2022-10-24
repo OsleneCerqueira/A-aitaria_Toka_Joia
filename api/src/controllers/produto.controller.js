@@ -2,13 +2,13 @@ const produtoService = require('../services/produto.service');
 const { validationResult } = require('express-validator');
 const createError = require('http-errors');
 
-const insere = async function (req, res, next) {
+const inserir = async function (req, res, next) {
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             throw createError(422, { errors: errors.array() })
         }
-        const produtos = await produtoService.insere(req.body)
+        const produtos = await produtoService.inserir(req.body)
         if (produtos && produtos.message) {
             throw produtos;
         }
@@ -79,7 +79,7 @@ const deletar = async function (req, res, next) {
 }
 
 module.exports = {
-    insere,
+    inserir,
     encontrarTodos,
     encontrarPorId,
     encontrarPorCategoria,
