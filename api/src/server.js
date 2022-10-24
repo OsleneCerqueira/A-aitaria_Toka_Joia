@@ -21,4 +21,4 @@ app.use('/itensPedido', itensPedido);
 app.use(handle404Error);
 app.use(handleError);
 
-app.listen(process.env.PORT, () => { console.log(`rodando na porta ${process.env.PORT}`) })
+app.listen(process.env.PORT || 3000, () => { console.log(`rodando na porta ${process.env.PORT}`) })
