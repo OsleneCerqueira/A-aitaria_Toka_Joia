@@ -10,17 +10,16 @@ const encontrarTodos = async function () {
     return pedidos;
 }
 
-const encontrarUmPorWhere = async function (where) {
-    const pedido = await Pedido.findOne({
-        where: where
-    });
-    return pedido;
-}
 const encontrarPorId = async function (id) {
     const pedido = await Pedido.findByPk(id);
     return pedido;
 }
-
+const encontrarUmPorWhere = async function (where) {
+    const mesa = await Pedido.findOne({
+        where: where
+    });
+    return mesa;
+}
 
 const atualizar = async function (pedido, id) {
     await Pedido.update(pedido, { where: { id: id } });

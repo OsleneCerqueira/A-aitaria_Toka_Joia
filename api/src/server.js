@@ -8,6 +8,7 @@ const usuarios = require('./routes/usuarioRoute');
 const produtos = require('./routes/produto.route');
 const mesas = require('./routes/mesa.route');
 const pedidos = require('./routes/pedido.route')
+const itensPedido = require('./routes/itemPedido.route')
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use('/usuarios', usuarios);
 app.use('/produtos', produtos);
 app.use('/mesas', mesas);
 app.use('/pedidos', pedidos);
+app.use('/itensPedido', itensPedido);
 app.use(handle404Error);
 app.use(handleError);
 
