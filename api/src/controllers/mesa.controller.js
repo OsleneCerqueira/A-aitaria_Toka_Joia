@@ -1,13 +1,7 @@
 const MesaService = require('../services/mesa.service');
-const { validationResult } = require('express-validator');
-const createError = require('http-errors');
 
 const inserir = async function (req, res, next) {
     try {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            throw createError(422, { errors: errors.array() })
-        }
         const mesas = await MesaService.inserir(req.body)
         if (mesas && mesas.message) {
             throw mesas;
@@ -53,10 +47,7 @@ const encontrarPorStatus = async function (req, res, next) {
 
 const atualizar = async function (req, res, next) {
     try {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            throw createError(422, { errors: errors.array() })
-        }
+
         const mesas = await MesaService.atualizar(req.body, req.params.id);
         if (mesas && mesas.message) {
             throw mesas;

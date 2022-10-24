@@ -24,11 +24,11 @@ const encontrarPorId = async function (id) {
 }
 
 
-const encontrarPorStatus = async function (Status) {
-    const mesa = await MesaRepository.encontrarUmPorWhere({ Status: Status })
+const encontrarPorStatus = async function (status) {
+    const mesa = await MesaRepository.encontrarUmPorWhere({ status: status })
 
     if (!mesa) {
-        return createError(404, `mesa de Status: ${Status} não encontrado`);
+        return createError(404, `mesa de Status: ${status} não encontrado`);
     }
     return mesa;
 }
