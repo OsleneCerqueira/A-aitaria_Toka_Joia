@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Produtos.init({
+  Produto.init({
     nome: DataTypes.STRING,
     descricao: DataTypes.STRING,
     tamanho: DataTypes.INTEGER,

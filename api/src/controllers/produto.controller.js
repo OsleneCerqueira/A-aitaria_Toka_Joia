@@ -21,8 +21,8 @@ const inserir = async function (req, res, next) {
 
 const encontrarTodos = async function (req, res, next) {
     try {
-        const produtoss = await produtoService.encontrarTodos();
-        res.send(produtoss)
+        const produtos = await produtoService.encontrarTodos();
+        res.send(produtos)
     } catch (error) {
         next(error)
     }
@@ -40,7 +40,7 @@ const encontrarPorId = async function (req, res, next) {
 }
 const encontrarPorCategoria = async function (req, res, next) {
     try {
-        const produtos = await produtoService.encontrarPorId(req.params.categoria);
+        const produtos = await produtoService.encontrarPorCategoria(req.params.categoria);
         res.send(produtos);
     } catch (error) {
         next(error)

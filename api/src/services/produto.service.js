@@ -47,12 +47,12 @@ const atualizar = async function (produto, id) {
 }
 
 const deletar = async function (id) {
-    const usuario = await usuarioRepository.encontrarPorId(id);
+    const produto = await ProdutoRepository.encontrarPorId(id);
 
-    if (!usuario) {
+    if (!produto) {
         return createError(404, `Produto de id: ${id} não encontrado`);
     }
-    await usuarioRepository.deletar(id);
+    await ProdutoRepository.deletar(id);
     return { sucess: `Produto de id: ${id} foi deletado com sucesso` };
 }
 
