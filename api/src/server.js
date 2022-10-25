@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const handle404Error = require('./middlewares/handle404Error');
 const handleError = require('./middlewares/handleError');
+const cors = require("cors");
 
 
 const usuarios = require('./routes/usuarioRoute');
@@ -12,6 +13,10 @@ const itensPedido = require('./routes/itemPedido.route')
 
 const app = express();
 app.use(express.json());
+const corsConfig = {
+    origin: "*",
+}
+app.use(cors(corsConfig));
 
 app.use('/usuarios', usuarios);
 app.use('/produtos', produtos);
