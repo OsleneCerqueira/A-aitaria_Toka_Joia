@@ -674,8 +674,7 @@ npm run dev
 ## 🔌 Link do AWS
 ##### Para acessar o usuarios precisa está logado.
 
- [API_Acaitaria-Toka_Joia](http://ec2-18-230-151-189.sa-east-1.compute.amazonaws.com:3000/usuarios/login)
-
+ [API_Acaitaria-Toka_Joia](http://ec2-18-230-151-189.sa-east-1.compute.amazonaws.com:3000/usuarios)
 
 ## 😊 Desenvolvido por
 
