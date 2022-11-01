@@ -59,11 +59,6 @@ Entrando na pasta:
 cd api
 ```
 
-Instalando apenas pacotes necessários para funcionamento da API:
-
-```
-npm i --production
-```
 
 Instalando todos os pacotes:
 
