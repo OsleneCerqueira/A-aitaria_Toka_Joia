@@ -167,7 +167,7 @@ npm run dev
   ```json
   {
         "email": "carlosAlberto@gmail.com",
-		"senha": "n10520181"
+		"senha": "n54545#181#"
   }
   ```
   Esquema da resposta 
